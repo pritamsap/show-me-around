@@ -1,0 +1,191 @@
+/*
+ * Light defaults. Dark values apply with theme="dark", or theme="system" when the OS is dark.
+ * To match an app's colors, pass the `colors` prop to TourProvider instead of editing this file.
+ */
+.tour-root {
+  --tour-accent: #4f46e5;
+  --tour-accent-text: #ffffff;
+  --tour-card-bg: #ffffff;
+  --tour-card-text: #1f2937;
+  --tour-muted: #6b7280;
+  --tour-backdrop: rgba(15, 23, 42, 0.45);
+  --tour-blur: 4px;
+  /* Starts fast, settles gently: feels smoother than a plain ease. */
+  --tour-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --tour-duration: 0.45s;
+
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  font-family: inherit;
+  animation: tour-fade-in 0.25s ease-out;
+}
+
+.tour-root[data-theme='dark'] {
+  --tour-accent: #818cf8;
+  --tour-accent-text: #111827;
+  --tour-card-bg: #1f2937;
+  --tour-card-text: #f3f4f6;
+  --tour-muted: #9ca3af;
+  --tour-backdrop: rgba(0, 0, 0, 0.55);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tour-root[data-theme='system'] {
+    --tour-accent: #818cf8;
+    --tour-accent-text: #111827;
+    --tour-card-bg: #1f2937;
+    --tour-card-text: #f3f4f6;
+    --tour-muted: #9ca3af;
+    --tour-backdrop: rgba(0, 0, 0, 0.55);
+  }
+}
+
+.tour-blur {
+  position: fixed;
+  inset: 0;
+  background: var(--tour-backdrop);
+  backdrop-filter: blur(var(--tour-blur));
+  -webkit-backdrop-filter: blur(var(--tour-blur));
+}
+
+/*
+ * The hole and the ring are animated frame by frame in TourOverlay.tsx (GLIDE_MS), not with CSS transitions:
+ * Chromium renders transitions of clip-path: path() wrongly. Only the ring's fade is CSS.
+ */
+.tour-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px var(--tour-card-bg), 0 0 0 5px var(--tour-accent);
+  transition: opacity 0.2s ease;
+}
+
+.tour-card {
+  position: fixed;
+  box-sizing: border-box;
+  width: min(320px, calc(100vw - 32px));
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--tour-card-bg);
+  color: var(--tour-card-text);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  top: 0;
+  left: 0;
+  transition: transform var(--tour-duration) var(--tour-ease);
+  outline: none;
+}
+
+.tour-card-content {
+  animation: tour-content-in 0.3s var(--tour-ease);
+}
+
+@keyframes tour-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes tour-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.tour-badge {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--tour-accent);
+  color: var(--tour-accent-text);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tour-title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.tour-body {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--tour-card-text);
+}
+
+.tour-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.tour-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--tour-muted);
+}
+
+.tour-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-color: transparent;
+  color: var(--tour-muted);
+}
+
+.tour-btn-icon:hover {
+  color: var(--tour-card-text);
+}
+
+.tour-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.tour-btn {
+  padding: 6px 12px;
+  border: 1px solid color-mix(in srgb, var(--tour-muted) 40%, transparent);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--tour-card-text);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.tour-btn-ghost {
+  border-color: transparent;
+  color: var(--tour-muted);
+}
+
+.tour-btn-primary {
+  border-color: var(--tour-accent);
+  background: var(--tour-accent);
+  color: var(--tour-accent-text);
+}
+
+.tour-btn:focus-visible {
+  outline: 2px solid var(--tour-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour-root,
+  .tour-blur,
+  .tour-ring,
+  .tour-card,
+  .tour-card-content {
+    transition: none;
+    animation: none;
+  }
+}

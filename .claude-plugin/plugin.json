@@ -1,0 +1,6 @@
+{
+  "name": "show-me-around",
+  "description": "Generate in-app product tours, what's-new tours for each release, and optional free AI narration for React and Electron apps.",
+  "version": "0.8.0",
+  "author": { "name": "Pritam" }
+}

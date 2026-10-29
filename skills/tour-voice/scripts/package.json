@@ -1,0 +1,9 @@
+{
+  "name": "show-me-around-voice",
+  "private": true,
+  "type": "module",
+  "description": "Generates tour narration with Kokoro. Installed into a cache folder, never into the app.",
+  "dependencies": {
+    "kokoro-js": "1.2.1"
+  }
+}

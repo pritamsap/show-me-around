@@ -1,0 +1,16 @@
+{
+  "name": "show-me-around",
+  "owner": {
+    "name": "Pritam"
+  },
+  "metadata": {
+    "description": "Team plugins for in-app product tours."
+  },
+  "plugins": [
+    {
+      "name": "show-me-around",
+      "source": "./",
+      "description": "Generate in-app product tours, what's-new tours for each release, and optional free AI narration for React and Electron apps."
+    }
+  ]
+}

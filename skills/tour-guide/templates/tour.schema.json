@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Show Me Around tour",
+  "description": "Steps for the in-app tour. Shared by every platform's renderer (React now, .NET later).",
+  "type": "object",
+  "required": ["steps"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "body"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "description": "Unique kebab-case id for the step."
+          },
+          "target": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "description": "Value of the element's data-tour attribute. Omit for a centered step."
+          },
+          "title": { "type": "string", "minLength": 1, "maxLength": 60 },
+          "body": { "type": "string", "minLength": 1, "maxLength": 280 },
+          "since": {
+            "type": "string",
+            "pattern": "^v?\\d+(\\.\\d+){0,2}",
+            "description": "Version that introduced the step. Omit for basic-tour steps."
+          },
+          "replaces": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+            "description": "Ids of older what's-new steps this one supersedes. Only this one shows when both would."
+          },
+          "route": { "type": "string", "description": "Route to open before the step is shown." },
+          "placement": { "enum": ["auto", "top", "bottom", "left", "right"] }
+        }
+      }
+    }
+  }
+}

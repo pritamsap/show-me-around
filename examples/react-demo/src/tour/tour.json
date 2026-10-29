@@ -1,0 +1,56 @@
+{
+  "$schema": "./tour.schema.json",
+  "steps": [
+    {
+      "id": "welcome",
+      "title": "Welcome to Notely",
+      "body": "Capture ideas fast and find them again later. Here's a 1-minute tour.",
+      "route": "/"
+    },
+    {
+      "id": "navigation",
+      "target": "sidebar-nav",
+      "title": "Find your way",
+      "body": "Switch between your Notes and Settings from here.",
+      "placement": "right"
+    },
+    {
+      "id": "new-note",
+      "target": "new-note-button",
+      "title": "Start a note",
+      "body": "Click \"New note\" to capture an idea. It's added to the top of your list."
+    },
+    {
+      "id": "notes",
+      "target": "note-list",
+      "title": "Your notes",
+      "body": "Every note you write lives here, newest first."
+    },
+    {
+      "id": "export",
+      "target": "export-button",
+      "title": "Take notes with you",
+      "body": "Export all your notes as a text file to back them up or share them."
+    },
+    {
+      "id": "theme",
+      "target": "theme-setting",
+      "route": "/settings",
+      "title": "Make it yours",
+      "body": "Pick a light or dark theme, or follow your system."
+    },
+    {
+      "id": "replay",
+      "target": "tour-buttons",
+      "title": "Replay any time",
+      "body": "Click \"Show me around\" to see this tour again, and the sparkle to see what's new after each update."
+    },
+    {
+      "id": "search",
+      "target": "search-box",
+      "since": "1.1.0",
+      "title": "Search your notes",
+      "body": "Type a word to filter your notes instantly."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "model": "onnx-community/Kokoro-82M-v1.0-ONNX",
+  "voice": "af_heart",
+  "speed": 1,
+  "steps": {
+    "welcome": {
+      "file": "welcome.wav",
+      "hash": "4a07914a0bad"
+    },
+    "navigation": {
+      "file": "navigation.wav",
+      "hash": "5193b74e1149"
+    },
+    "new-note": {
+      "file": "new-note.wav",
+      "hash": "03a8a2015442"
+    },
+    "notes": {
+      "file": "notes.wav",
+      "hash": "04f418e881b9"
+    },
+    "export": {
+      "file": "export.wav",
+      "hash": "6a0462c167be"
+    },
+    "theme": {
+      "file": "theme.wav",
+      "hash": "f68b15e5a60b"
+    },
+    "replay": {
+      "file": "replay.wav",
+      "hash": "8bcf60a9182c"
+    },
+    "search": {
+      "file": "search.wav",
+      "hash": "0d038f114027"
+    }
+  }
+}
